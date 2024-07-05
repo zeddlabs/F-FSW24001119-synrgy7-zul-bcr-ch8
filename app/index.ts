@@ -1,10 +1,12 @@
-import "dotenv/config"
+import dotenv from "dotenv"
 import express, { Express } from "express"
 import apiRouter from "../config/routes.conf"
 import { Model } from "objection"
 import db from "../config/database.conf"
 import path from "path"
 import cors from "cors"
+
+dotenv.config()
 
 const app: Express = express()
 

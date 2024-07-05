@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "test": "jest --coverage",
     "db:migrate": "knex migrate:latest",
-    "db:seed": "knex seed:run"
+    "db:seed": "knex seed:run",
+    "db:rollback": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",
