@@ -7,7 +7,6 @@ import path from "path"
 import cors from "cors"
 
 const app: Express = express()
-const PORT: number = Number(process.env.APP_PORT) || 8000
 
 Model.knex(db)
 
@@ -18,6 +17,4 @@ app.use("/public", express.static(path.resolve(__dirname, "../public")))
 
 app.use(apiRouter)
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`)
-})
+export default app

@@ -9,15 +9,15 @@ const index = async (req: Request, res: Response): Promise<any> => {
     const users = await userService.getAll()
 
     res.status(200).json({
-      status: 'OK',
-      message: 'Successfully get all users',
+      status: "OK",
+      message: "Successfully get all users",
       count: users.count,
-      data: users.data
+      data: users.data,
     })
   } catch (error: any) {
     res.status(400).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -29,14 +29,14 @@ const show = async (req: Request, res: Response): Promise<any> => {
     const user = await userService.getById(id)
 
     res.status(200).json({
-      status: 'OK',
-      message: 'Successfully get a user',
-      data: user
+      status: "OK",
+      message: "Successfully get a user",
+      data: user,
     })
   } catch (error: any) {
     res.status(404).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -46,9 +46,9 @@ const store = async (req: Request, res: Response): Promise<any> => {
     const validateRequest = validationResult(req)
     if (!validateRequest.isEmpty()) {
       return res.status(400).json({
-        status: 'FAIL',
-        message: 'Validation error',
-        errors: validateRequest.array()
+        status: "FAIL",
+        message: "Validation error",
+        errors: validateRequest.array(),
       })
     }
 
@@ -58,14 +58,14 @@ const store = async (req: Request, res: Response): Promise<any> => {
     const newUser = await userService.store({ ...user, avatar, password })
 
     res.status(201).json({
-      status: 'OK',
-      message: 'Successfully store a user',
-      data: newUser
+      status: "OK",
+      message: "Successfully store a user",
+      data: newUser,
     })
   } catch (error: any) {
     res.status(400).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -75,9 +75,9 @@ const update = async (req: Request, res: Response): Promise<any> => {
     const validateRequest = validationResult(req)
     if (!validateRequest.isEmpty()) {
       return res.status(400).json({
-        status: 'FAIL',
-        message: 'Validation error',
-        errors: validateRequest.array()
+        status: "FAIL",
+        message: "Validation error",
+        errors: validateRequest.array(),
       })
     }
 
@@ -100,14 +100,14 @@ const update = async (req: Request, res: Response): Promise<any> => {
     const updatedUser = await userService.update(id, { ...user, avatar })
 
     res.status(200).json({
-      status: 'OK',
-      message: 'Successfully update a user',
-      data: updatedUser
+      status: "OK",
+      message: "Successfully update a user",
+      data: updatedUser,
     })
   } catch (error: any) {
     res.status(400).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -119,13 +119,13 @@ const destroy = async (req: Request, res: Response): Promise<any> => {
     await userService.destroy(id)
 
     res.status(200).json({
-      status: 'OK',
-      message: 'Successfully delete a user'
+      status: "OK",
+      message: "Successfully delete a user",
     })
   } catch (error: any) {
     res.status(400).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -137,14 +137,14 @@ const current = async (req: IRequest, res: Response): Promise<any> => {
     const user = await userService.getById(id)
 
     res.status(200).json({
-      status: 'OK',
-      message: 'Successfully get current user',
-      data: user
+      status: "OK",
+      message: "Successfully get current user",
+      data: user,
     })
   } catch (error: any) {
     res.status(404).json({
-      status: 'FAIL',
-      message: error.message
+      status: "FAIL",
+      message: error.message,
     })
   }
 }
@@ -155,5 +155,5 @@ export default {
   store,
   update,
   destroy,
-  current
+  current,
 }

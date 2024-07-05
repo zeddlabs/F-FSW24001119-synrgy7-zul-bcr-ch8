@@ -1,7 +1,7 @@
 import { Router } from "express"
 import controllers from "../controllers"
 import upload from "../middlewares/multer.middleware"
-import { check, checkSchema } from "express-validator"
+import { checkSchema } from "express-validator"
 import {
   signInValidationSchema,
   signUpValidationSchema,
