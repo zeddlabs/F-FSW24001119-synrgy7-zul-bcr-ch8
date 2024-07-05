@@ -1,8 +1,9 @@
 {
-  "name": "f-fsw24001119-synrgy7-zul-bcr-ch6",
+  "name": "f-fsw24001119-synrgy7-zul-bcr-ch8",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "pnpm@9.0.6",
   "scripts": {
     "start": "node ./build/bin/www.js",
     "dev": "nodemon ./bin/www.ts",
