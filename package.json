@@ -8,7 +8,7 @@
     "dev": "nodemon ./bin/www.ts",
     "build": "tsc",
     "lint": "eslint .",
-    "test": "jest --coverage",
+    "test": "jest",
     "db:migrate": "knex migrate:latest",
     "db:seed": "knex seed:run",
     "db:rollback": "knex migrate:rollback"
