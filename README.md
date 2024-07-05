@@ -28,6 +28,8 @@ Pada challenge di chapter ke-8 ini, akan dilakukan proses deployment.
 
 ### Endpoints
 
+Base URL : `https://leading-alix-zul-labs-6423fb71.koyeb.app`
+
 - ### Auth
 
 | Endpoint               | Method | Description                          |
