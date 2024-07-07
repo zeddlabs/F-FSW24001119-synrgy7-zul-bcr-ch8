@@ -15,7 +15,12 @@ Model.knex(db)
 app.use(cors({ origin: "*" }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use("/public", express.static(path.resolve(__dirname, "../public")))
+
+if (process.env.NODE_ENV === "production") {
+  app.use("/public", express.static(path.resolve(__dirname, "../../public")))
+} else {
+  app.use("/public", express.static(path.resolve(__dirname, "../public")))
+}
 
 app.use(apiRouter)
 
