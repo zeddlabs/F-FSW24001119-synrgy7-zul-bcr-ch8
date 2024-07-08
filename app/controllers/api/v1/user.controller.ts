@@ -53,7 +53,10 @@ const store = async (req: Request, res: Response): Promise<any> => {
     }
 
     const user = req.body
-    const avatar = `/public/uploads/images/${req.file!.filename}`
+    let avatar = ""
+    if (req.file) {
+      avatar = `/public/uploads/images/${req.file!.filename}`
+    }
     const password = bcrypt.hashSync(user.password, 10)
     const newUser = await userService.store({ ...user, avatar, password })
 
