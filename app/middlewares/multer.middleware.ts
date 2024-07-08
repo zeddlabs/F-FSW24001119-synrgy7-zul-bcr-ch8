@@ -1,7 +1,13 @@
 import path from "path"
 import multer from "multer"
 
-const uploadDirectory = path.join(__dirname, "../../public/uploads/images")
+let uploadDirectory
+
+if (process.env.NODE_ENV === "production") {
+  uploadDirectory = path.join(__dirname, "../../../public/uploads/images")
+} else {
+  uploadDirectory = path.join(__dirname, "../../public/uploads/images")
+}
 
 const diskStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -9,12 +15,19 @@ const diskStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
-    cb(null, file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname))
+    cb(
+      null,
+      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
+    )
   },
 })
 
 const fileFilter = (req: any, file: any, cb: any) => {
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png") {
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/png"
+  ) {
     cb(null, true)
   } else {
     cb(new Error("File must be an image"), false)
@@ -23,7 +36,7 @@ const fileFilter = (req: any, file: any, cb: any) => {
 
 const upload = multer({
   storage: diskStorage,
-  fileFilter
+  fileFilter,
 })
 
 export default upload
